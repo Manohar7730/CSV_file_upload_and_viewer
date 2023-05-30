@@ -14,4 +14,5 @@
 11) added basic css to file page to look better
 12) using csv-parser , we shared the parsing results of csv file by sending data as array to the file page
 13) now added search input bar to file page in ejs and and added css and javascript for fecthing input in the page
-14) 
+14) added pagenation at fronend and backend , both working good, and add css for good appearance of file page
+![Screenshot 2023-05-30 204103](https://github.com/Manohar7730/CSV_file_upload_and_viewer/assets/120391462/a30aae9b-3194-439f-8322-8a31589fa51a)
