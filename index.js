@@ -19,8 +19,6 @@ app.set('views', 'views');
 // Serve static files (e.g., CSS, JavaScript, images)
 app.use(express.static('public'));
 
-// Connect to the database
-const db = require('./config/mongoose');
 
 // Import route handlers
 const homeRouter = require('./routes/home');
@@ -35,3 +33,6 @@ app.listen(port, (err) => {
     }
     console.log(`Server is up and running on port :${port}`);
 });
+
+// Connect to the database
+const db = require('./config/mongoose');
