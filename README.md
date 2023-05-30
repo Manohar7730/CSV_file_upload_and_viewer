@@ -8,4 +8,5 @@
 6) created Schema for file and used multer for destination and file name
 7) created frontend home screen for upload was success
 8) uploadcontroller working good and files are uploading with multer
-
+9) now added some divs like search, delete and view button in frontend and improved css for good appearance and added js for working of search option with filename
+10) 
