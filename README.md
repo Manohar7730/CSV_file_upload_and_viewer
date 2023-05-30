@@ -6,4 +6,6 @@
 4) Created a project , cluster and database in mongo atlas.
 5) server is connected to database of mongoAtlas and created database url in .env file
 6) created Schema for file and used multer for destination and file name
+7) created frontend home screen for upload was success
+8) uploadcontroller working good and files are uploading with multer
 
