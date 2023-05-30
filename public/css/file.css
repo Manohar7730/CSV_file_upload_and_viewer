@@ -63,3 +63,20 @@ td {
     background-color: gainsboro;
     align-items: center;
 }
+
+#pagination {
+    display: flex;
+    width: 100%;
+    justify-content: center;
+    position: relative;
+}
+
+span{
+    color: red;
+}
+
+a{
+    margin: 5px;
+    text-decoration: none;
+    color: green
+}

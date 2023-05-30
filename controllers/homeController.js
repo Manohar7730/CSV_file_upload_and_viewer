@@ -56,6 +56,7 @@ module.exports.delete = async (req, res) => {
 
 module.exports.render = async (req, res) => {
     const fieldId = req.params.id;
+    const currentPage = parseInt(req.query.page) || 1;
     try {
         const csvFile = await CSV.findById(fieldId);
         if (!csvFile) {
@@ -68,10 +69,39 @@ module.exports.render = async (req, res) => {
             .pipe(csv())
             .on('data', (data) => results.push(data))
             .on('end', () => {
+                const itemsPerPage = 100;
+                const startIdx = (currentPage-1) * itemsPerPage;
+                const endIdx = startIdx + itemsPerPage;
+                const paginatedData = results.slice(startIdx,endIdx);
+
+                const totalPages = Math.ceil(results.length/itemsPerPage);
+                const maxPageNumbers = 10;
+                let startPage , endPage;
+                if(totalPages<=maxPageNumbers){
+                    startPage = 1;
+                    endPage = totalPages;
+                }else{ 
+                    const halfMaxPageNumbers = Math.floor(maxPageNumbers/2);
+                    if(currentPage<=halfMaxPageNumbers){
+                        startPage = 1;
+                        endPage = maxPageNumbers;
+                    }else if(currentPage+halfMaxPageNumbers >= totalPages){
+                        startPage = totalPages-maxPageNumbers+1;
+                        endPage = totalPages;
+                    }else{
+                        startPage = currentPage - halfMaxPageNumbers;
+                        endPage= currentPage + halfMaxPageNumbers;
+                    }
+                }
                 res.render('file', {
                     title: 'CSV File',
                     file: csvFile,
-                    data : results
+                    data : paginatedData,
+                    currentPage : currentPage,
+                    totalPages : totalPages,
+                    startPage : startPage,
+                    endPage : endPage,
+                    maxPageNumbers : maxPageNumbers
                 });
             })
             .on('error', (error) => {

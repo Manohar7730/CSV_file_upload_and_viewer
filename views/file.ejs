@@ -54,6 +54,37 @@
                 <% }); %>
         </tbody>
     </table>
+    <!-- Pagination -->
+    <div id="pagination">
+        <% if (currentPage> 1) { %>
+            <a href="/render/<%= file._id %>?page=<%= currentPage - 1 %>">Previous</a>
+            <% } %>
+
+                <% if (currentPage> 5) { %>
+                    <span class="page-number">...</span>
+                    <% } %>
+
+                        <% for (let i=startPage; i <=endPage; i++) { %>
+                            <% if (i===currentPage) { %>
+                                <span class="current-page">
+                                    <%= i %>
+                                </span>
+                                <% } else { %>
+                                    <a href="/render/<%= file._id %>?page=<%= i %>">
+                                        <%= i %>
+                                    </a>
+                                    <% } %>
+                                        <% } %>
+
+                                            <% if (endPage < totalPages - 4) { %>
+                                                <span class="page-number">...</span>
+                                                <% } %>
+
+                                                    <% if (currentPage < totalPages) { %>
+                                                        <a
+                                                            href="/render/<%= file._id %>?page=<%= currentPage + 1 %>">Next</a>
+                                                        <% } %>
+    </div>
     <script src="/js/file.js"></script>
 </body>
 
