@@ -1,7 +1,10 @@
 const express = require('express');
 const port = process.env.PORT || 8000;
 
+const env = require('dotenv').config();
 const app = express();
+
+const db = require('./config/mongoose');
 
 const homeRouter = require('./routes/home');
 app.use('/',homeRouter);
