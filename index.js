@@ -3,9 +3,8 @@ const port = process.env.PORT || 8000;
 
 const app = express();
 
-app.get('/',(req,res)=>{
-    res.send('Server is running');
-})
+const homeRouter = require('./routes/home');
+app.use('/',homeRouter);
 
 app.listen(port,(err)=>{
     if(err){
