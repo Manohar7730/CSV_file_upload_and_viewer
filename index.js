@@ -2,11 +2,11 @@
 const express = require('express');
 const port = process.env.PORT || 8000;
 
-// Set the port number for the server to listen on
-const env = require('dotenv').config();
-
 // Create an Express application
 const app = express();
+
+// Set the port number for the server to listen on
+const env = require('dotenv').config();
 
 // Middleware setup
 app.use(express.json());
