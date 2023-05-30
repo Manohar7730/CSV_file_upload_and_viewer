@@ -3,6 +3,8 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://kit.fontawesome.com/d2d263dc81.js" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="/css/home.css">
     <title><%= title %></title>
 </head>
 <body>
@@ -10,18 +12,23 @@
         <div class="main">
             <div id="file_uploader">
                 <form action="/upload" method="post" enctype="multipart/form-data">
-                    <input type="file" name="file" id="csv">
+                    <label for="csv" id="csv-label">Choose</label>
+                    <input type="file" name="file" id="csv" hidden onchange="updateFileName()">
                     <input type="submit" value="upload" class="upload_button">
                 </form>
+            </div>
+            <div id="search-container">
+                <!-- Search input field -->
+                <input type="text" id="search-input" placeholder="Search file name">
             </div>
         </div>
         <div class="file_viewer">
             <%if(csvFiles.length>0){%>
                 <%for(file of csvFiles){%>
-                    <div>
-                        <div>
-                            <%= file.original_name %>
-                        </div>
+                    <div class="card">
+                            <small class="file-name"><%= file.original_name %></small>
+                            <a href="/delete/<%=file._id%>"><i class="fa-solid fa-trash"></i></a>
+                            <a href="/render/<%=file._id%>"><i class="fa-solid fa-eye"></i></a>
                     </div>
                     <%}%>
                 <%}else{%>
@@ -29,5 +36,6 @@
                     <%}%>
         </div>
     </section>
+    <script src="/js/home.js"></script>>
 </body>
 </html>

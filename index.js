@@ -10,6 +10,8 @@ app.use(express.urlencoded({extended:true}));
 app.set('view engine','ejs');
 app.set('views','views');
 
+app.use(express.static('public'));
+
 const db = require('./config/mongoose');
 
 const homeRouter = require('./routes/home');
