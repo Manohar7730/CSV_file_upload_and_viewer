@@ -4,6 +4,9 @@ const port = process.env.PORT || 8000;
 const env = require('dotenv').config();
 const app = express();
 
+app.set('view engine','ejs');
+app.set('views','views');
+
 const db = require('./config/mongoose');
 
 const homeRouter = require('./routes/home');
