@@ -51,3 +51,19 @@ module.exports.delete = async (req,res)=>{
         return res.status(500).send('Error while deleting the file')
     }
 }
+
+module.exports.render = async(req,res)=>{
+    const fieldId = req.params.id;
+    try{
+        const csvFile = await CSV.findById(fieldId);
+        if(!csvFile){
+            return res.status(400).send('File not found');
+        }
+        res.render('file',{
+            title : 'CSV File',
+            file : csvFile
+        })
+    }catch(err){
+        return res.status(500).send('Cannot view the file')
+    }
+}

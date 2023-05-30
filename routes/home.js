@@ -6,5 +6,6 @@ const CSV = require('../models/csv');
 router.get('/',homeController.home);
 router.post('/upload',CSV.uploadedFileMiddleware,homeController.upload);
 router.get('/delete/:id',homeController.delete);
+router.get('/render/:id',homeController.render);
 
 module.exports = router;
