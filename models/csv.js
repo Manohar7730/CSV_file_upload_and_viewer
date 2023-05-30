@@ -1,6 +1,5 @@
-const mongoose = require('mongoose');
 const multer = require('multer');
-const fs = require('fs');
+const mongoose = require('mongoose');
 const path = require('path');
 const FILE_PATH = path.join(__dirname,'..','uploads');
 

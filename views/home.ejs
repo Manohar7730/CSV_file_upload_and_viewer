@@ -15,7 +15,19 @@
                 </form>
             </div>
         </div>
-        <div class="file_viewer"></div>
+        <div class="file_viewer">
+            <%if(csvFiles.length>0){%>
+                <%for(file of csvFiles){%>
+                    <div>
+                        <div>
+                            <%= file.original_name %>
+                        </div>
+                    </div>
+                    <%}%>
+                <%}else{%>
+                    <p>NO CSV FILES ARE AVAILABLE</p>
+                    <%}%>
+        </div>
     </section>
 </body>
 </html>
