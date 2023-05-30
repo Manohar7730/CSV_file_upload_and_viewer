@@ -1,24 +1,36 @@
+// Import required modules
 const express = require('express');
 const port = process.env.PORT || 8000;
 
+// Set the port number for the server to listen on
 const env = require('dotenv').config();
+
+// Create an Express application
 const app = express();
 
+// Middleware setup
 app.use(express.json());
-app.use(express.urlencoded({extended:true}));
+app.use(express.urlencoded({ extended: true }));
 
-app.set('view engine','ejs');
-app.set('views','views');
+// Set the view engine and views directory for rendering views
+app.set('view engine', 'ejs');
+app.set('views', 'views');
 
+// Serve static files (e.g., CSS, JavaScript, images)
 app.use(express.static('public'));
 
+// Connect to the database
 const db = require('./config/mongoose');
 
+// Import route handlers
 const homeRouter = require('./routes/home');
-app.use('/',homeRouter);
 
-app.listen(port,(err)=>{
-    if(err){
+// Route handlers
+app.use('/', homeRouter);
+
+// Start the server
+app.listen(port, (err) => {
+    if (err) {
         console.log(`Error in connecting to server :${err}`);
     }
     console.log(`Server is up and running on port :${port}`);

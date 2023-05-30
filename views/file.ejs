@@ -6,12 +6,12 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="/css/file.css">
     <title>
-        <%= title %>
+        <%= title %><!-- Title of the page -->
     </title>
 </head>
 
 <body>
-    <h1>File Name :- <%= file.original_name %>
+    <h1>File Name :- <%= file.original_name %><!-- Displaying the original file name -->
     </h1>
     <!-- CSV file content section -->
     <h2>CSV File Content</h2>
@@ -26,14 +26,14 @@
         <thead>
             <tr>
                 <!-- Conditional rendering of table headers -->
-                <% if (data.length> 0) { %>
-                    <% const headers=Object.keys(data[0]); %>
+                <% if (data.length> 0) { %><!-- Checking if there is data available -->
+                    <% const headers=Object.keys(data[0]); %><!-- Extracting the headers from the first data row -->
                         <% headers.forEach((header)=> { %>
                             <!-- Table header cell -->
                             <th>
                                 <div class="column-header">
                                     <span>
-                                        <%= header %>
+                                        <%= header %><!-- Displaying the header text -->
                                     </span>
                                 </div>
                             </th>
@@ -43,11 +43,11 @@
         </thead>
         <!-- Table body -->
         <tbody>
-            <% data.forEach((row)=> { %>
+            <% data.forEach((row)=> { %><!-- Looping through each data row -->
                 <tr>
-                    <% Object.values(row).forEach((value)=> { %>
+                    <% Object.values(row).forEach((value)=> { %><!-- Looping through each value in a row -->
                         <td>
-                            <%= value %>
+                            <%= value %><!-- Displaying the value in a table cell -->
                         </td>
                         <% }); %>
                 </tr>
@@ -56,36 +56,38 @@
     </table>
     <!-- Pagination -->
     <div id="pagination">
-        <% if (currentPage> 1) { %>
-            <a href="/render/<%= file._id %>?page=<%= currentPage - 1 %>">Previous</a>
+        <% if (currentPage> 1) { %><!-- Checking if there is a previous page -->
+            <a href="/render/<%= file._id %>?page=<%= currentPage - 1 %>">Previous</a><!-- Link to the previous page -->
             <% } %>
 
-                <% if (currentPage> 5) { %>
+                <% if (currentPage> 5) { %> <!-- Displaying ellipsis if there are more than 5 pages -->
                     <span class="page-number">...</span>
                     <% } %>
 
-                        <% for (let i=startPage; i <=endPage; i++) { %>
-                            <% if (i===currentPage) { %>
+                        <% for (let i=startPage; i <=endPage; i++) { %><!-- Looping through page numbers to display -->
+                            <% if (i===currentPage) { %> <!-- Highlighting the current page number -->
                                 <span class="current-page">
-                                    <%= i %>
+                                    <%= i %><!-- Displaying the current page number -->
                                 </span>
                                 <% } else { %>
                                     <a href="/render/<%= file._id %>?page=<%= i %>">
-                                        <%= i %>
+                                        <%= i %><!-- Link to other page numbers -->
                                     </a>
                                     <% } %>
                                         <% } %>
 
                                             <% if (endPage < totalPages - 4) { %>
+                                                <!-- Displaying ellipsis if there are more than 4 pages remaining -->
                                                 <span class="page-number">...</span>
                                                 <% } %>
 
                                                     <% if (currentPage < totalPages) { %>
+                                                        <!-- Checking if there is a next page -->
                                                         <a
-                                                            href="/render/<%= file._id %>?page=<%= currentPage + 1 %>">Next</a>
+                                                            href="/render/<%= file._id %>?page=<%= currentPage + 1 %>">Next</a><!-- Link to the next page -->
                                                         <% } %>
     </div>
-    <script src="/js/file.js"></script>
+    <script src="/js/file.js"></script><!-- Including JavaScript file -->
 </body>
 
 </html>
