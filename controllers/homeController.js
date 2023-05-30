@@ -35,3 +35,19 @@ module.exports.upload = async (req,res)=>{
         return res.status(500).send('error in upload the csv files')
     }
 }
+
+module.exports.delete = async (req,res)=>{
+    try{
+        const fieldId = req.params.id;
+        const deletedCSV = await CSV.findOneAndDelete({_id : fieldId});
+        if(!deletedCSV){
+            return res.redirect('/');
+        }
+        const filepath = path.join(CSV.filepath,deletedCSV.file_name);
+        await fs.promises.unlink(filepath);
+
+        res.redirect('/');
+    }catch(err){
+        return res.status(500).send('Error while deleting the file')
+    }
+}
