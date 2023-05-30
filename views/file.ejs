@@ -15,19 +15,30 @@
     </h1>
     <!-- CSV file content section -->
     <h2>CSV File Content</h2>
-
-    <!-- Data table -->
+    <!-- Search container -->
+    <div class="search-container">
+        <!-- Search input field -->
+        <input type="text" id="searchInput" placeholder="Search...">
+    </div>
     <!-- Data table -->
     <table id="dataTable">
         <!-- Table headers -->
         <thead>
             <tr>
-                <% const headers=Object.keys(data[0]); %>
-                    <% headers.forEach((header)=> { %>
-                        <th>
-                            <%= header %>
-                        </th>
-                        <% }); %>
+                <!-- Conditional rendering of table headers -->
+                <% if (data.length> 0) { %>
+                    <% const headers=Object.keys(data[0]); %>
+                        <% headers.forEach((header)=> { %>
+                            <!-- Table header cell -->
+                            <th>
+                                <div class="column-header">
+                                    <span>
+                                        <%= header %>
+                                    </span>
+                                </div>
+                            </th>
+                            <% }); %>
+                                <% } %>
             </tr>
         </thead>
         <!-- Table body -->
@@ -43,7 +54,7 @@
                 <% }); %>
         </tbody>
     </table>
-
+    <script src="/js/file.js"></script>
 </body>
 
 </html>

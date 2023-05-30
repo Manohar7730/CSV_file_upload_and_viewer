@@ -1,38 +1,65 @@
-*{
+* {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
 }
 
-body{
+body {
     background-color: aquamarine;
 }
 
-h1{
+h1 {
     font-family: monospace;
     font-weight: 800;
     text-align: center;
     background-image: url(https://images.unsplash.com/photo-1618005198919-d3d4b5a92ead?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTB8fDNkJTIwd2FsbHBhcGVyc3xlbnwwfHwwfHx8MA%3D%3D&auto=format&fit=crop&w=500&q=60);
-    width: max-content;
+    width: 50vw;
     position: relative;
-    left: 20%;
-    right: 20%;
+    left: 25vw;
+    right: 25vw;
     margin: 20px;
     padding: 10px;
     border-radius: 15px;
     box-shadow: 0px 8px 12px rgba(0, 0, 0, 0.8);
 }
 
-h2{
+h2 {
     font-weight: 100;
     font-family: cursive;
     text-align: center;
-    width: 60%;
+    width: 50vw;
     position: relative;
-    left: 20%;
-    right: 20%;
+    left: 25vw;
+    right: 25vw;
     margin: 20px;
     padding: 10px;
     border-radius: 15px;
     box-shadow: 0px 8px 12px rgba(0, 0, 0, 0.8);
+}
+
+table {
+    width: 80%;
+    margin: 0 auto;
+    border-collapse: collapse;
+}
+
+th,
+td {
+    border: 1px solid black;
+    padding: 8px;
+    text-align: left;
+}
+
+.search-container input{
+    position: relative;
+    left: 35vw;
+    width: 30vw;
+    height: 25px;
+    border-radius: 10px;
+    font-size: 20px;
+    font-weight: 600;
+    font-style: oblique;
+    text-align: center;
+    background-color: gainsboro;
+    align-items: center;
 }
